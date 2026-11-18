@@ -1,0 +1,54 @@
+name: meitheal
+description: "Meitheal 2027: record a grandparent's story, townland by townland."
+publish_to: "none"
+version: 0.2.7+9
+
+environment:
+  sdk: ">=3.8.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.2
+  record: ^6.0.0
+  path_provider: ^2.1.4
+  audioplayers: ^6.1.0
+  url_launcher: ^6.3.1
+  share_plus: ^10.1.1
+  shared_preferences: ^2.3.2
+  image_picker: ^1.1.2
+  crypto: ^3.0.7
+  http_parser: ^4.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/photos/
+  # Bundled, never fetched from Google at runtime (SIL Open Font License, assets/fonts/LICENSE-*.txt). The same faces as the website.
+  fonts:
+    - family: Fraunces
+      fonts:
+        - asset: assets/fonts/Fraunces-Regular.ttf
+        - asset: assets/fonts/Fraunces-Italic.ttf
+          style: italic
+        - asset: assets/fonts/Fraunces-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Fraunces-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Fraunces-Bold.ttf
+          weight: 700
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700

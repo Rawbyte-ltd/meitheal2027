@@ -1,0 +1,33 @@
+# Builds the phone app for iPhone on a GitHub Mac, unsigned. Install it with Sideloadly (or AltStore), which signs it
+# with the tester's own Apple ID. Run it from the Actions tab or `gh workflow run ios.yml`; the .ipa is the run's artifact.
+name: iOS test build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ipa:
+    runs-on: macos-15
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: apps/mobile
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.41.6
+          cache: true
+      - run: flutter pub get
+      - run: flutter build ios --release --no-codesign
+      - name: Package the .ipa
+        run: |
+          mkdir -p Payload
+          cp -R build/ios/iphoneos/Runner.app Payload/
+          zip -qr Meitheal-2027-test.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Meitheal-2027-ios
+          path: apps/mobile/Meitheal-2027-test.ipa
+          retention-days: 14
